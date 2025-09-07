@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be Party — Boutique</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="logo" id="logo">
+          <img src="assets/logo.png.jpg" alt="Be Party logo" id="logo-img">
+        </div>
+        <div>
+          <h1 id="site-title">Be Party</h1>
+          <div style="font-size:12px;color:var(--muted)">Boumhal, Tunisia • 
+            +216 20566943</div>
+        </div>
+      </div>
+      <nav class="top">
+        <div class="controls">
+          <div class="search" role="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="opacity:.6">
+              <path d="M21 21l-4.35-4.35" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="11" cy="11" r="6" stroke="#333" stroke-width="1.6" fill="none"/>
+            </svg>
+            <input id="searchInput" placeholder="Search products" />
+          </div>
+        </div>
+        <div class="lang-switch" role="tablist" aria-label="Languages">
+          <button id="lang-fr" class="active" data-lang="fr">Français</button>
+          <button id="lang-ar" data-lang="ar">العربية</button>
+          <button id="lang-en" data-lang="en">English</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="main" id="main">
+      <!-- Categories -->
+      <aside class="categories" aria-label="Categories">
+        <h3 id="cat-title">Categories</h3>
+        <div class="cat-list" id="categoryList">
+          <!-- Populated by JS -->
+        </div>
+      </aside>
+
+      <!-- Products -->
+      <section>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h2 id="products-title">Products</h2>
+          <div style="color:var(--muted);font-size:14px" id="resultCount"></div>
+        </div>
+        <div class="products" id="productsGrid">
+          <!-- Product cards injected by JS -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div>© <span id="year"></span> Be Party — All rights reserved</div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <!-- Modal content injected by JS -->
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
