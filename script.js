@@ -24,6 +24,8 @@ const translations = {
   
   // App state
   let state={lang:'fr',category:'All',q:''};
+  let basket = [];
+
   
   document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -85,13 +87,62 @@ const translations = {
       return matchesQ && matchesCat;
     });
     filtered.forEach(p=>{
-      const card=document.createElement('article'); card.className='card';
-      const img=document.createElement('div'); img.className='thumb';
-      img.innerHTML=`<img src="${p.img}" alt="${p.title[state.lang]}">`;
-      const title=document.createElement('div'); title.className='title'; title.textContent=p.title[state.lang];
-      const price=document.createElement('div'); price.className='price'; price.textContent=p.price;
-      card.appendChild(img); card.appendChild(title); card.appendChild(price);
-      grid.appendChild(card);
-    });
-  }
-  
+        const card=document.createElement('article'); 
+        card.className='card';
+    
+        const img=document.createElement('div'); 
+        img.className='thumb';
+        img.innerHTML=`<img src="${p.img}" alt="${p.title[state.lang]}">`;
+    
+        const title=document.createElement('div'); 
+        title.className='title'; 
+        title.textContent=p.title[state.lang];
+    
+        const price=document.createElement('div'); 
+        price.className='price'; 
+        price.textContent=p.price;
+    
+        //  ⬇️  THIS IS WHERE YOU PASTE THE ADD BUTTON
+        const addBtn = document.createElement('button');
+        addBtn.className = 'btn primary';
+        addBtn.textContent = 'Add';
+        addBtn.onclick = () => addToBasket(p);
+    
+        // append all elements to card
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(price);
+        card.appendChild(addBtn);   // <— make sure this is after price
+        grid.appendChild(card);
+      });
+      function addToBasket(product){
+        const existing = basket.find(i => i.id === product.id);
+        if(existing){
+          existing.qty += 1;
+        } else {
+          basket.push({
+            id: product.id,
+            title: product.title[state.lang],
+            price: product.price,
+            qty: 1
+          });
+        }
+        renderBasket();
+      }
+      
+      function renderBasket(){
+        const list = document.getElementById('basketItems');
+        const totalEl = document.getElementById('basketTotal');
+        list.innerHTML = '';
+        let total = 0;
+        basket.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = `${item.title} x${item.qty}`;
+          const priceNum = parseFloat(item.price); // assumes "24 TND"
+          total += priceNum * item.qty;
+          list.appendChild(li);
+        });
+        totalEl.textContent = `${total} TND`;
+      };
+      
+    }
