@@ -19,8 +19,7 @@
         </div>
         <div>
           <h1 id="site-title">Be Party</h1>
-          <div style="font-size:12px;color:var(--muted)">Boumhal, Tunisia • 
-            +216 20566943</div>
+          <div style="font-size:12px;color:var(--muted)">Boumhal, Tunisia • +216 XXXXXXXX</div>
         </div>
       </div>
       <nav class="top">
@@ -32,27 +31,35 @@
             </svg>
             <input id="searchInput" placeholder="Search products" />
           </div>
+            <!-- Basket in header -->
+  <div class="basket" id="basket">
+    <h3>🛒</h3>
+    <ul id="basketItems"></ul>
+    <div class="basket-total">
+      Total: <span id="basketTotal">0 TND</span>
+    </div>
+  </div>
+
         </div>
         <div class="lang-switch" role="tablist" aria-label="Languages">
-          <button id="lang-fr" class="active" data-lang="fr">Français</button>
-          <button id="lang-ar" data-lang="ar">العربية</button>
-          <button id="lang-en" data-lang="en">English</button>
+          <button id="lang-fr" class="active" data-lang="fr">Fr</button>
+          <button id="lang-ar" data-lang="ar">AR</button>
+          <button id="lang-en" data-lang="en">Eng</button>
         </div>
       </nav>
     </header>
 
     <!-- Main content -->
     <main class="main" id="main">
-      <!-- Categories -->
-      <aside class="categories" aria-label="Categories">
-        <h3 id="cat-title">Categories</h3>
-        <div class="cat-list" id="categoryList">
-          <!-- Populated by JS -->
-        </div>
-      </aside>
+   <!-- Horizontal categories wrapper -->
+<div class="categories-wrapper">
+    <div class="categories-horizontal">
+      <div id="categoryList"></div>
+    </div>
+  </div>
 
-      <!-- Products -->
-      <section>
+    <!-- Products -->
+    <section>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
           <h2 id="products-title">Products</h2>
           <div style="color:var(--muted);font-size:14px" id="resultCount"></div>
@@ -63,6 +70,9 @@
       </section>
     </main>
 
+  <!-- Products Grid -->
+  <div class="products" id="productsGrid"></div>
+  
     <!-- Footer -->
     <footer>
       <div>© <span id="year"></span> Be Party — All rights reserved</div>
@@ -80,3 +90,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
